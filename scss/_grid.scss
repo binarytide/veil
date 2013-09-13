@@ -52,8 +52,8 @@ $container-lg-desktop:        ((1140px + $grid-gutter-width)) !default;
 	// Prevent columns from collapsing when empty
 	min-height: 1px;
 	// Inner gutter via padding
-	padding-left:  ($grid-gutter-width / -2);
-	padding-right: ($grid-gutter-width / -2);
+	padding-left:  ($grid-gutter-width / 2);
+	padding-right: ($grid-gutter-width / 2);
 }
 
 // Centered container element
@@ -61,8 +61,8 @@ $container-lg-desktop:        ((1140px + $grid-gutter-width)) !default;
 	max-width: $max-width;
 	margin-right: auto;
 	margin-left: auto;
-	padding-left:  ($grid-gutter-width / -2);
-	padding-right: ($grid-gutter-width / -2);
+	padding-left:  ($grid-gutter-width / 2);
+	padding-right: ($grid-gutter-width / 2);
 	@extend clearfix;
 }
 
