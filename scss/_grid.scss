@@ -4,7 +4,7 @@
 //! @extend clearfix - apply clearfix style
 //! @include container($max-width: 100%) - default is 100%, can be adjusted
 //! @include row($gutter: $grid-gutter-width) - default can be modified, most often do not need to
-//! @include @extend common-style - basic gutter styling
+//! @include common-style() - basic gutter styling
 //! @include screen($size, $container: false){add screen specific styles here} - sizes are small, medium, large. if container is set to true it includes container
 //! @include col($col) - place within a given screen size and pass the column size you want for that size, passing 0 hides the object at that given size
 //! @include push($push: 0) - push an object x amount of columns, default is 0 which will set left: auto
@@ -12,42 +12,8 @@
 //! @include offset($offset: 0) - offset an object x amount of columns, default is 0 which will set margin-left: 0
 */
 
-// Extra small screen / phone
-$screen-xs:                  480px !default;
-$screen-phone:               $screen-xs !default;
-// Small screen / tablet
-$screen-sm:                  768px !default;
-$screen-tablet:              $screen-sm !default;
-// Medium screen / desktop
-$screen-md:                  992px !default;
-$screen-desktop:             $screen-md !default;
-// Large screen / wide desktop
-$screen-lg:                  1200px !default;
-$screen-lg-desktop:          $screen-lg !default;
-// So media queries don't overlap when required, provide a maximum
-$screen-xs-max:              ($screen-sm - 1) !default;
-$screen-sm-max:              ($screen-md - 1) !default;
-$screen-md-max:              ($screen-lg - 1) !default;
-// Number of columns in the grid system
-$grid-columns:              12 !default;
-// Padding, to be divided by two and applied to the left and right of all columns
-$grid-gutter-width:         30px !default;
-// Point at which the navbar stops collapsing
-$grid-float-breakpoint:     $screen-tablet !default;
-// Small screen / tablet
-$container-tablet:            ((720px + $grid-gutter-width)) !default;
 
-// Medium screen / desktop
-$container-desktop:           ((940px + $grid-gutter-width)) !default;
-
-// Large screen / wide desktop
-$container-lg-desktop:        ((1140px + $grid-gutter-width)) !default;
-
-// Clearfix
-.clearfix {&:before, &:after {content: " ";display: table;}&:after{clear: both;}}
-
-
-.common-style{
+@mixin common-style(){
 	position: relative;
 	// Prevent columns from collapsing when empty
 	min-height: 1px;
@@ -98,8 +64,8 @@ $container-lg-desktop:        ((1140px + $grid-gutter-width)) !default;
 	
 @mixin col($col){
 	  @if $col == 0 {display:none;} 
-	  @else if $col >= 12 {@extend common-style; width: 100%; display: block;}
-	  @else {@extend common-style; width: percentage(($col / $grid-columns)); display: block; float:left;}
+	  @else if $col >= 12 {@include common-style(); width: 100%; display: block;}
+	  @else {@include common-style(); width: percentage(($col / $grid-columns)); display: block; float:left;}
 }
 
 @mixin push($push: 0){
