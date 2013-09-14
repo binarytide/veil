@@ -4,7 +4,7 @@
 //! @extend clearfix - apply clearfix style
 //! @include container($max-width: 100%) - default is 100%, can be adjusted
 //! @include row($gutter: $grid-gutter-width) - default can be modified, most often do not need to
-//! @include @extend common-style - basic gutter styling
+//! @include common-style() - basic gutter styling
 //! @include screen($size, $container: false){add screen specific styles here} - sizes are small, medium, large. if container is set to true it includes container
 //! @include col($col) - place within a given screen size and pass the column size you want for that size, passing 0 hides the object at that given size
 //! @include push($push: 0) - push an object x amount of columns, default is 0 which will set left: auto
@@ -13,7 +13,7 @@
 */
 
 
-.common-style{
+@mixin common-style(){
 	position: relative;
 	// Prevent columns from collapsing when empty
 	min-height: 1px;
@@ -64,8 +64,8 @@
 	
 @mixin col($col){
 	  @if $col == 0 {display:none;} 
-	  @else if $col >= 12 {@extend common-style; width: 100%; display: block;}
-	  @else {@extend common-style; width: percentage(($col / $grid-columns)); display: block; float:left;}
+	  @else if $col >= 12 {@include common-style(); width: 100%; display: block;}
+	  @else {@include common-style(); width: percentage(($col / $grid-columns)); display: block; float:left;}
 }
 
 @mixin push($push: 0){

@@ -30,18 +30,18 @@ small   { font-size: 85%; }
 // Undo browser default styling
 cite    { font-style: normal; }
 
-// Contextual emphasis
-.text-muted          { color: $text-muted; }
-.text-primary        { color: $brand-primary; }
-.text-warning        { color: $state-warning-text; }
-.text-danger         { color: $state-danger-text; }
-.text-success        { color: $state-success-text; }
-.text-info           { color: $state-info-text; }
+@mixin text($emphasis){
+	@if $emphasis == muted { color: $text-muted; }
+	@else if $emphasis == primary { color: $brand-primary; }
+	@else if $emphasis == warning { color: $state-warning-text; }
+	@else if $emphasis == danger { color: $state-danger-text; }
+	@else if $emphasis == success { color: $state-success-text; }
+	@else if $emphasis == info { color: $state-info-text; }
+	@else if $emphasis == left { text-align: left; }
+	@else if $emphasis == right { text-align: right; }
+	@else if $emphasis == center { text-align: center; }
+}
 
-// Alignment
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
-.text-center         { text-align: center; }
 
 
 // Headings
